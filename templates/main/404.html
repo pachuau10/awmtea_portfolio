@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>404 — Not Found</title>
+
 <style>
     :root {
         --bg: #050a0e;
@@ -24,9 +25,11 @@
         font-family: 'Segoe UI', sans-serif;
         color: var(--text);
         overflow: hidden;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
-    /* Animated floating lines background */
+    /* Animated background cyber lines */
     .lines {
         position: absolute;
         top: 0; left: 0;
@@ -34,6 +37,7 @@
         height: 100%;
         overflow: hidden;
         z-index: 1;
+        pointer-events: none;
     }
 
     .line {
@@ -42,7 +46,7 @@
         height: 100%;
         background: linear-gradient(to bottom, transparent, var(--cyan), transparent);
         opacity: 0.15;
-        animation: drop 4s linear infinite;
+        animation: drop linear infinite;
     }
 
     @keyframes drop {
@@ -50,16 +54,18 @@
         100% { transform: translateY(100%); }
     }
 
-    /* 404 text with animation */
+    /* Content container */
     .error-container {
         position: relative;
         z-index: 2;
         text-align: center;
-        margin-top: -50px;
+        margin-top: -5vh;
+        padding: 0 1rem;
     }
 
+    /* responsive 404 size */
     .error-404 {
-        font-size: 7rem;
+        font-size: clamp(4rem, 18vw, 8rem);
         font-weight: 800;
         letter-spacing: 0.1em;
         color: var(--cyan);
@@ -78,27 +84,29 @@
         100% { opacity: 0.9; }
     }
 
+    /* responsive message */
     .message {
-        font-size: 1.1rem;
-        color: var(--text);
+        font-size: clamp(0.8rem, 3vw, 1.2rem);
         opacity: 0.9;
         margin-top: 0.5rem;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
     }
 
+    /* responsive button */
     .back-btn {
+        display: inline-block;
         margin-top: 2rem;
-        padding: 0.8rem 2rem;
+        padding: 0.9rem 2.3rem;
         border: 1px solid var(--cyan);
         border-radius: 6px;
         color: var(--cyan);
         cursor: pointer;
         background: rgba(0, 234, 255, 0.08);
         text-transform: uppercase;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         transition: 0.3s;
-        font-size: 0.9rem;
+        font-size: clamp(0.8rem, 3vw, 1rem);
         text-shadow: var(--glow);
     }
 
@@ -109,11 +117,27 @@
             0 0 15px rgba(0, 234, 255, 0.9),
             0 0 30px rgba(0, 234, 255, 0.5);
     }
+
+    /* Mobile-specific tweaks */
+    @media (max-width: 600px) {
+
+        .lines .line {
+            opacity: 0.1; /* reduce clutter */
+        }
+
+        body {
+            padding: 1rem;
+        }
+
+        .error-container {
+            margin-top: -3vh;
+        }
+    }
 </style>
 </head>
 <body>
 
-<!-- Moving cyber lines -->
+<!-- Cyber lines -->
 <div class="lines">
     <div class="line" style="left:10%; animation-duration:3s;"></div>
     <div class="line" style="left:25%; animation-duration:4.5s;"></div>
@@ -126,7 +150,6 @@
 <div class="error-container">
     <div class="error-404">404</div>
     <div class="message">The page you're looking for doesn't exist.</div>
-
     <a href="/" class="back-btn">Go Home</a>
 </div>
 
