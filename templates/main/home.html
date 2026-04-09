@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ramngaihawma — MSc Physics | Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-tag">MSc Physics Student</p>
+
+      <h1 class="hero-name">
+        Hello, I'm
+        <span class="highlight">Ramngaihawma</span>
+      </h1>
+
+      <p class="hero-title">
+        <span data-typewriter="Physicist / Researcher / Developer"></span><span class="cursor"></span>
+      </p>
+
+      <p class="hero-desc">
+        Exploring the universe one equation at a time. Passionate about
+        <strong>theoretical physics</strong>, <strong>computational modelling</strong>,
+        and building tools that bridge science and technology.
+        Currently pursuing my MSc at IIT Guwahati.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#about" class="btn btn-primary">
+          <i class="fa fa-user"></i> About Me
+        </a>
+        <a href="{% url 'main:publications' %}" class="btn btn-ghost">
+          <i class="fa fa-book"></i> View Research
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">{{ projects|length|default:"5" }}+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">{{ publications|length|default:"3" }}+</div>
+          <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Years Research</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">01 / About</p>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-avatar">
+        <div class="avatar-frame">
+            <img
+    src="https://res.cloudinary.com/dqquazig1/image/upload/v1775710447/awmtea_xr3zdr.jpg"
+    alt="Ramngaihawma"
+    style="width:100%; height:100%; object-fit:cover; border-radius:8px;"
+  />
+ 
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p>
+          I'm <strong>Ramngaihawma</strong>, an MSc Physics student at <strong>IIT Guwahati</strong>.
+          My research sits at the intersection of <strong>theoretical physics</strong> and
+          <strong>computational methods</strong>, with a particular focus on [your research area e.g.
+          quantum mechanics / condensed matter / astrophysics].
+        </p>
+        <p>
+          I enjoy building simulations, analysing data, and writing clean code to solve complex
+          physics problems. Outside the lab, I contribute to open-source projects and write about
+          science on my blog.
+        </p>
+        <p>
+          Currently working on my thesis: <strong>Theoretical Modeling of a Single Neutral-Atom Qubit Based on Trapped Rubidiom-87</strong> under the
+          supervision of Dr. Kanhaiya Pandey
+        </p>
+
+        <div class="about-tags">
+          <span class="tag tag-cyan">Quantum Mechanics</span>
+          <span class="tag tag-cyan">Statistical Physics</span>
+          <span class="tag tag-purple">Python</span>
+          <span class="tag tag-purple">NumPy / SciPy</span>
+          <span class="tag tag-green">Simulation</span>
+          <span class="tag tag-green">Data Analysis</span>
+          <span class="tag tag-cyan">LaTeX</span>
+          <span class="tag tag-purple">MATLAB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== EDUCATION ===== -->
+<section id="education" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">02 / Education</p>
+        <h2 class="section-title">Academic Background</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2026 — Present</div>
+        <div class="timeline-degree">MSc Physics</div>
+        <div class="timeline-school">Indian Institute of Tecnology — Guwahati, India</div>
+        <div class="timeline-detail">
+          Specialisation in Quantum Physics. Thesis: "Theoretical Modeling of a Single Neutral-Atom Qubit Based on Trapped Rubidiom-87". GPA: 7.0
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2021 — 2024</div>
+        <div class="timeline-degree">BSc Physics (Hons)</div>
+        <div class="timeline-school">Pachhunga University College — Aizawl, India</div>
+        <div class="timeline-detail">
+          First Class Honours. GPA: 7.5
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-degree">Higher Secondary Certificate</div>
+        <div class="timeline-school">ST Joseph Higher Secondary School, Aizawl</div>
+        <div class="timeline-detail">Science stream — Physics, Mathematics, Chemistry, Biology, English</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">03 / Skills</p>
+        <h2 class="section-title">Tools & Expertise</h2>
+      </div>
+    </div>
+
+    {% if skills_by_category %}
+      <div class="skills-grid">
+        {% for category, skill_list in skills_by_category.items %}
+          <div class="card">
+            <div class="skill-category-title">{{ category }}</div>
+            {% for skill in skill_list %}
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-pct">{{ skill.proficiency }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-fill" style="width: {{ skill.proficiency }}%"></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Default skills display when no DB data -->
+      <div class="skills-grid">
+        <div class="card">
+          <div class="skill-category-title">Programming</div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">MATLAB</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">C++</span><span class="skill-pct">65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="skill-category-title">Physics & Theory</div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">Quantum Mechanics</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">Statistical Mechanics</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">Electrodynamics</span><span class="skill-pct">78%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="skill-category-title">Data & Tools</div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">NumPy / SciPy</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">Matplotlib</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span class="skill-name">LaTeX</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+
+<!-- ===== FEATURED PROJECTS ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">04 / Projects</p>
+        <h2 class="section-title">Featured Work</h2>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      {% if projects %}
+        {% for project in projects %}
+          <div class="card project-card">
+            <div class="project-header">
+              <div class="project-icon"><i class="fa fa-atom"></i></div>
+              <div class="project-links">
+                {% if project.github_url %}
+                  <a href="{{ project.github_url }}" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                  </a>
+                {% endif %}
+                {% if project.demo_url %}
+                  <a href="{{ project.demo_url }}" target="_blank" title="Live Demo">
+                    <i class="fa fa-external-link-alt"></i>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-desc">{{ project.description }}</p>
+            <div class="project-tech">
+              {% for tech in project.get_tech_list %}
+                <span class="tag tag-cyan">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Demo cards -->
+        <div class="card project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa fa-atom"></i></div>
+            <div class="project-links">
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Quantum Harmonic Oscillator Simulator</h3>
+          <p class="project-desc">Interactive simulation of quantum harmonic oscillator wavefunctions and energy eigenvalues using the time-independent Schrödinger equation solved numerically.</p>
+          <div class="project-tech">
+            <span class="tag tag-cyan">Python</span>
+            <span class="tag tag-cyan">NumPy</span>
+            <span class="tag tag-purple">Matplotlib</span>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa fa-chart-line"></i></div>
+            <div class="project-links">
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" title="Demo"><i class="fa fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Ising Model Monte Carlo</h3>
+          <p class="project-desc">2D Ising model simulation using the Metropolis–Hastings algorithm to study phase transitions and magnetic properties in ferromagnetic materials.</p>
+          <div class="project-tech">
+            <span class="tag tag-cyan">Python</span>
+            <span class="tag tag-green">SciPy</span>
+            <span class="tag tag-purple">Numba</span>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa fa-satellite"></i></div>
+            <div class="project-links">
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">N-Body Orbital Mechanics</h3>
+          <p class="project-desc">Gravitational N-body simulation with adaptive timestep integration. Visualises planetary orbits and studies chaotic dynamics in multi-body systems.</p>
+          <div class="project-tech">
+            <span class="tag tag-cyan">Python</span>
+            <span class="tag tag-purple">C++ core</span>
+            <span class="tag tag-green">Plotly</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="{% url 'main:projects' %}" class="btn btn-ghost">
+        View All Projects <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">05 / Research</p>
+        <h2 class="section-title">Publications</h2>
+      </div>
+    </div>
+
+    <div class="pub-list">
+      {% if publications %}
+        {% for pub in publications %}
+          <div class="card pub-card">
+            <span class="pub-type-badge badge-{{ pub.pub_type }}">{{ pub.get_pub_type_display }}</span>
+            <div class="pub-title">{{ pub.title }}</div>
+            <div class="pub-meta">
+              <span>{{ pub.authors }}</span> &nbsp;·&nbsp; {{ pub.journal }} &nbsp;·&nbsp; {{ pub.year }}
+            </div>
+            {% if pub.abstract %}
+              <p class="pub-abstract">{{ pub.abstract|truncatewords:40 }}</p>
+            {% endif %}
+            <div class="pub-links">
+              {% if pub.doi_url %}<a href="{{ pub.doi_url }}" class="pub-link" target="_blank">DOI</a>{% endif %}
+              {% if pub.arxiv_url %}<a href="{{ pub.arxiv_url }}" class="pub-link" target="_blank">arXiv</a>{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Demo publications -->
+        <div class="card pub-card">
+          <span class="pub-type-badge badge-preprint">Preprint</span>
+          <div class="pub-title">Numerical Study of Quantum Entanglement in Low-Dimensional Spin Systems</div>
+          <div class="pub-meta">
+            <span>Your Name, Supervisor Name</span> &nbsp;·&nbsp; arXiv &nbsp;·&nbsp; 2024
+          </div>
+          <p class="pub-abstract">We present a numerical investigation of bipartite entanglement entropy in one-dimensional quantum spin chains using the density matrix renormalisation group (DMRG) method...</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">arXiv</a>
+          </div>
+        </div>
+
+        <div class="card pub-card">
+          <span class="pub-type-badge badge-conference">Conference</span>
+          <div class="pub-title">Phase Transitions in the 2D Ising Model: A Monte Carlo Approach</div>
+          <div class="pub-meta">
+            <span>Your Name, Co-Author Name</span> &nbsp;·&nbsp; Journal of Physics: Conference Series &nbsp;·&nbsp; 2023
+          </div>
+          <p class="pub-abstract">This paper presents a comprehensive Monte Carlo study of the critical behaviour of the two-dimensional Ising model near the ferromagnetic phase transition...</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">PDF</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="{% url 'main:publications' %}" class="btn btn-ghost">
+        All Publications <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">06 / Blog</p>
+        <h2 class="section-title">Recent Posts</h2>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+      {% if recent_posts %}
+        {% for post in recent_posts %}
+          <a href="{% url 'main:blog_detail' post.slug %}" class="card blog-card" style="text-decoration:none; color:inherit;">
+            <div class="blog-date">{{ post.created_at|date:"M d, Y" }}</div>
+            <h3 class="blog-title">{{ post.title }}</h3>
+            <p class="blog-excerpt">{{ post.excerpt }}</p>
+            <div class="blog-tags">
+              {% for tag in post.get_tags_list %}
+                <span class="tag tag-purple">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <div class="card blog-card">
+          <div class="blog-date">Jan 10, 2025</div>
+          <h3 class="blog-title">Understanding the Schrödinger Equation Intuitively</h3>
+          <p class="blog-excerpt">A deep dive into the physical meaning behind the most important equation in quantum mechanics — beyond the mathematics.</p>
+          <div class="blog-tags">
+            <span class="tag tag-purple">Quantum Physics</span>
+            <span class="tag tag-cyan">Tutorial</span>
+          </div>
+        </div>
+
+        <div class="card blog-card">
+          <div class="blog-date">Dec 22, 2024</div>
+          <h3 class="blog-title">Why Monte Carlo Methods are Everywhere in Physics</h3>
+          <p class="blog-excerpt">From statistical mechanics to particle physics — exploring how randomness helps us solve deterministic problems.</p>
+          <div class="blog-tags">
+            <span class="tag tag-purple">Computation</span>
+            <span class="tag tag-green">Statistics</span>
+          </div>
+        </div>
+
+        <div class="card blog-card">
+          <div class="blog-date">Nov 05, 2024</div>
+          <h3 class="blog-title">Setting Up a Python Environment for Physics Simulations</h3>
+          <p class="blog-excerpt">A practical guide to setting up NumPy, SciPy, and Matplotlib for scientific computing — with tips for reproducible research.</p>
+          <div class="blog-tags">
+            <span class="tag tag-purple">Python</span>
+            <span class="tag tag-cyan">Tools</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="{% url 'main:blog' %}" class="btn btn-ghost">
+        All Posts <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog — Ramngaihawma{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-label">// Blog</p>
+    <h1 class="page-header-title">Writing</h1>
+    <p class="page-header-subtitle">
+      Thoughts on physics, computation, research, and science communication.
+    </p>
+  </div>
+
+  <div class="blog-grid" style="padding-bottom: 5rem;">
+    {% if posts %}
+      {% for post in posts %}
+        <a href="{% url 'main:blog_detail' post.slug %}" class="card blog-card" style="text-decoration:none; color:inherit; display:block;">
+          <div class="blog-date">{{ post.created_at|date:"M d, Y" }}</div>
+          <h3 class="blog-title">{{ post.title }}</h3>
+          <p class="blog-excerpt">{{ post.excerpt }}</p>
+          <div class="blog-tags">
+            {% for tag in post.get_tags_list %}
+              <span class="tag tag-purple">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <div style="grid-column:1/-1; text-align:center; padding:4rem 0; color:var(--text-muted); font-family:var(--font-mono); font-size:0.8rem;">
+        // No posts yet — add them via the Django admin panel
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

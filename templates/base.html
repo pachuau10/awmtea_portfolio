@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Ramngaihawma — MSc Physics{% endblock %}</title>
+  <meta name="description" content="Portfolio of an MSc Physics student — research, projects, and publications." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<!-- Open Graph / Social Media Tags -->
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://yourwebsite.com/" />
+<meta property="og:title"       content="Ramngaihawma — MSc Physics" />
+<meta property="og:description" content="Portfolio of Ramngaihawma — MSc Physics student. Explore my research, projects, publications and blog." />
+<meta property="og:image"       content="https://res.cloudinary.com/dqquazig1/image/upload/v1775710447/awmtea_xr3zdr.jpg" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Ramngaihawma — MSc Physics" />
+<meta name="twitter:description" content="Portfolio of Ramngaihawma — MSc Physics student. Explore my research, projects, publications and blog." />
+<meta name="twitter:image"       content="https://res.cloudinary.com/dqquazig1/image/upload/v1775710447/awmtea_xr3zdr.jpg" />
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <!-- Grid background -->
+  <div class="grid-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="{% url 'main:home' %}" class="nav-logo">
+        Ram<span></span>ngaihawma
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="{% url 'main:home' %}#about">About</a></li>
+        <li><a href="{% url 'main:home' %}#skills">Skills</a></li>
+        <li><a href="{% url 'main:projects' %}">Projects</a></li>
+        <li><a href="{% url 'main:publications' %}">Research</a></li>
+        <li><a href="{% url 'main:blog' %}">Blog</a></li>
+        <li><a href="{% url 'main:contact' %}">Contact</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav-mobile">
+    <a href="{% url 'main:home' %}#about">About</a>
+    <a href="{% url 'main:home' %}#skills">Skills</a>
+    <a href="{% url 'main:projects' %}">Projects</a>
+    <a href="{% url 'main:publications' %}">Research</a>
+    <a href="{% url 'main:blog' %}">Blog</a>
+    <a href="{% url 'main:contact' %}">Contact</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          &copy; {{ now.year|default:"2025" }} <span>Ramngaihawma</span> — MSc Physics
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+          <a href="https://arxiv.org/" target="_blank">arXiv</a>
+          <a href="{% url 'main:contact' %}">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

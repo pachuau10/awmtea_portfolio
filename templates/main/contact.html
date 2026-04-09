@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact — Ramngaihawma{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-label">// Contact</p>
+    <h1 class="page-header-title">Get In Touch</h1>
+    <p class="page-header-subtitle">
+      Whether it's a research collaboration, project idea, or just a hello — I'd love to hear from you.
+    </p>
+  </div>
+
+  <div class="contact-grid" style="padding-bottom: 5rem;">
+
+    <!-- Left: info -->
+    <div>
+      <h3>Let's Connect</h3>
+      <p>
+        I'm always open to discussing physics, computational methods, open-source projects,
+        or research opportunities. Drop me a message and I'll get back to you soon.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:your@email.com" class="contact-link">
+          <span class="contact-link-icon"><i class="fa fa-envelope"></i></span>
+          awmteapachuau@email.com
+        </a>
+        <a href="https://github.com/Awmtea" target="_blank" class="contact-link">
+          <span class="contact-link-icon"><i class="fab fa-github"></i></span>
+          github.com/Awmtea
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+          <span class="contact-link-icon"><i class="fab fa-linkedin"></i></span>
+          linkedin.com/in/yourprofile
+        </a>
+        <a href="https://arxiv.org/search/?searchtype=author&query=yourname" target="_blank" class="contact-link">
+          <span class="contact-link-icon"><i class="fa fa-book-open"></i></span>
+          arXiv Author Page
+        </a>
+        <a href="/static/cv.pdf" target="_blank" class="contact-link">
+          <span class="contact-link-icon"><i class="fa fa-file-pdf"></i></span>
+          Download CV / Resume
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div>
+      {% if sent %}
+        <div class="alert alert-success">
+          <i class="fa fa-check-circle"></i> &nbsp;
+          Message received! I'll get back to you soon.
+        </div>
+      {% endif %}
+
+      <form class="contact-form" method="post" action="{% url 'main:contact' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject</label>
+          <input class="form-input" type="text" id="subject" name="subject" placeholder="Research Collaboration / General Inquiry" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="Tell me what's on your mind..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+          <i class="fa fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

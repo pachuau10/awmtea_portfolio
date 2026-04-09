@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects — Ramngaihawma{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-label">// Projects</p>
+    <h1 class="page-header-title">My Work</h1>
+    <p class="page-header-subtitle">
+      A collection of research tools, simulations, and software projects I've built.
+    </p>
+  </div>
+
+  <div class="projects-grid" style="padding-bottom: 5rem;">
+    {% if projects %}
+      {% for project in projects %}
+        <div class="card project-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa fa-atom"></i></div>
+            <div class="project-links">
+              {% if project.github_url %}
+                <a href="{{ project.github_url }}" target="_blank"><i class="fab fa-github"></i></a>
+              {% endif %}
+              {% if project.demo_url %}
+                <a href="{{ project.demo_url }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+              {% endif %}
+            </div>
+          </div>
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-desc">{{ project.description }}</p>
+          <div class="project-tech">
+            {% for tech in project.get_tech_list %}
+              <span class="tag tag-cyan">{{ tech }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div style="grid-column: 1/-1; text-align:center; padding: 4rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem;">
+        // No projects yet — add them via the Django admin panel
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

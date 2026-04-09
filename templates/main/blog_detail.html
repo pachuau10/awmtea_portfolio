@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} — Ramngaihawma{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="blog-detail-header">
+    <div class="blog-date">{{ post.created_at|date:"M d, Y" }}</div>
+    <h1 class="page-header-title" style="font-size: clamp(1.6rem, 4vw, 2.8rem); margin: 0.5rem 0 1rem;">
+      {{ post.title }}
+    </h1>
+    <div class="blog-tags">
+      {% for tag in post.get_tags_list %}
+        <span class="tag tag-purple">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="blog-content" style="padding-bottom: 5rem;">
+    {{ post.content|linebreaks }}
+  </div>
+
+  <div style="padding-bottom: 3rem;">
+    <a href="{% url 'main:blog' %}" class="btn btn-ghost">
+      <i class="fa fa-arrow-left"></i> Back to Blog
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Ramngaihawma — Your Name{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-label">// Research</p>
+    <h1 class="page-header-title">Publications</h1>
+    <p class="page-header-subtitle">
+      Peer-reviewed articles, conference papers, and preprints.
+    </p>
+  </div>
+
+  <div class="pub-list" style="padding-bottom: 5rem;">
+    {% if publications %}
+      {% for pub in publications %}
+        <div class="card pub-card">
+          <span class="pub-type-badge badge-{{ pub.pub_type }}">{{ pub.get_pub_type_display }}</span>
+          <div class="pub-title">{{ pub.title }}</div>
+          <div class="pub-meta">
+            <span>{{ pub.authors }}</span> &nbsp;·&nbsp; {{ pub.journal }} &nbsp;·&nbsp; {{ pub.year }}
+          </div>
+          {% if pub.abstract %}
+            <p class="pub-abstract">{{ pub.abstract }}</p>
+          {% endif %}
+          <div class="pub-links">
+            {% if pub.doi_url %}<a href="{{ pub.doi_url }}" class="pub-link" target="_blank">DOI</a>{% endif %}
+            {% if pub.arxiv_url %}<a href="{{ pub.arxiv_url }}" class="pub-link" target="_blank">arXiv</a>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div style="text-align:center; padding: 4rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem;">
+        // No publications yet — add them via the Django admin panel
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
