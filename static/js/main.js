@@ -1,3 +1,14 @@
+// ===== FONT LOADING =====
+const FONT_TIMEOUT = 3000;
+const fontTimeout = setTimeout(() => {
+  document.body.classList.add('fonts-loaded');
+}, FONT_TIMEOUT);
+document.fonts.ready.then(() => {
+  clearTimeout(fontTimeout);
+  document.body.classList.add('fonts-loaded');
+});
+
+
 // ===== NAV TOGGLE =====
 const toggle = document.querySelector('.nav-toggle');
 const mobileNav = document.querySelector('.nav-mobile');
