@@ -83,7 +83,6 @@ h1, h2, h3, h4 {
   pointer-events: none;
   z-index: 0;
 }
-
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
@@ -202,7 +201,7 @@ h1, h2, h3, h4 {
 
 /* ===== LAYOUT ===== */
 main {
-  padding-top: var(--nav-h);
+  padding-top: var(--nav-h); /* prevents overlap */
   position: relative;
   z-index: 1;
 }
@@ -217,9 +216,13 @@ section {
   padding: clamp(4rem, 8vw, 7rem) 0;
 }
 
+main > section:first-child {
+  padding-top: 2rem; /* minimal clean gap below navbar */
+}
+
 /* ===== SECTION HEADER ===== */
 .section-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -1100,5 +1103,113 @@ section {
   .hero-btns { flex-direction: column; }
   .btn { width: 100%; justify-content: center; }
   .timeline { padding-left: 1.5rem; }
+}
+
+/* =========================
+   📱 MOBILE FIXES
+   ========================= */
+@media (max-width: 768px) {
+
+  /* Container full width */
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Smaller hero name */
+  .hero-name {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  /* Highlight text */
+  .hero-name .highlight {
+    font-size: 2.2rem;
+  }
+
+  /* Subtitle */
+  .hero-title {
+    font-size: 1rem;
+  }
+
+  /* Body text */
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.45rem;
+  }
+
+  /* Buttons stack vertically */
+  .hero-btns {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  /* Stats become 2 columns */
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* About section grid becomes 1 column */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .avatar-frame {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* Reduce section headers */
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .section-label {
+    font-size: 0.9rem;
+  }
+
+  /* Card padding fix */
+  .card {
+    padding: 1.2rem;
+  }
+
+  /* Project titles */
+  .project-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* =========================
+   📱 SMALL PHONES FIX
+   (iPhone SE, small Android)
+   ========================= */
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 1.7rem;
+  }
+
+  .hero-name .highlight {
+    font-size: 1.9rem;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card, .pub-card {
+    padding: 1rem;
+  }
 }
 
