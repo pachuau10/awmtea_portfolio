@@ -204,7 +204,6 @@ main {
   padding-top: var(--nav-h); /* prevents overlap */
   position: relative;
   z-index: 1;
-}
 
 .container {
   max-width: 1200px;

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 — Not Found</title>
+<style>
+    :root {
+        --bg: #050a0e;
+        --cyan: #00eaff;
+        --pink: #ff2bd1;
+        --text: #cbd5e1;
+        --glow: 0 0 10px rgba(0, 234, 255, 0.7);
+        --glow-big: 0 0 40px rgba(0, 234, 255, 0.5);
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--bg);
+        font-family: 'Segoe UI', sans-serif;
+        color: var(--text);
+        overflow: hidden;
+    }
+
+    /* Animated floating lines background */
+    .lines {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .line {
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, var(--cyan), transparent);
+        opacity: 0.15;
+        animation: drop 4s linear infinite;
+    }
+
+    @keyframes drop {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    /* 404 text with animation */
+    .error-container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-top: -50px;
+    }
+
+    .error-404 {
+        font-size: 7rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: var(--cyan);
+        text-shadow:
+            var(--glow),
+            var(--glow-big),
+            0 0 80px rgba(0, 234, 255, 0.4);
+        animation: flicker 1.8s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0%   { opacity: 1;        text-shadow: var(--glow-big); }
+        50%  { opacity: 0.7;      text-shadow: var(--glow); }
+        60%  { opacity: 0.4; }
+        70%  { opacity: 1; }
+        100% { opacity: 0.9; }
+    }
+
+    .message {
+        font-size: 1.1rem;
+        color: var(--text);
+        opacity: 0.9;
+        margin-top: 0.5rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    .back-btn {
+        margin-top: 2rem;
+        padding: 0.8rem 2rem;
+        border: 1px solid var(--cyan);
+        border-radius: 6px;
+        color: var(--cyan);
+        cursor: pointer;
+        background: rgba(0, 234, 255, 0.08);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        transition: 0.3s;
+        font-size: 0.9rem;
+        text-shadow: var(--glow);
+    }
+
+    .back-btn:hover {
+        background: var(--cyan);
+        color: #000;
+        box-shadow:
+            0 0 15px rgba(0, 234, 255, 0.9),
+            0 0 30px rgba(0, 234, 255, 0.5);
+    }
+</style>
+</head>
+<body>
+
+<!-- Moving cyber lines -->
+<div class="lines">
+    <div class="line" style="left:10%; animation-duration:3s;"></div>
+    <div class="line" style="left:25%; animation-duration:4.5s;"></div>
+    <div class="line" style="left:40%; animation-duration:3.8s;"></div>
+    <div class="line" style="left:60%; animation-duration:5s;"></div>
+    <div class="line" style="left:75%; animation-duration:3.4s;"></div>
+    <div class="line" style="left:90%; animation-duration:4.7s;"></div>
+</div>
+
+<div class="error-container">
+    <div class="error-404">404</div>
+    <div class="message">The page you're looking for doesn't exist.</div>
+
+    <a href="/" class="back-btn">Go Home</a>
+</div>
+
+</body>
+</html>

@@ -44,3 +44,10 @@ def contact(request):
     if request.method == 'POST':
         sent = True
     return render(request, 'main/contact.html', {'sent': sent})
+
+from django.shortcuts import render
+
+from django.shortcuts import render
+
+def custom_404(request, exception):
+    return render(request, 'main/404.html', status=404)
